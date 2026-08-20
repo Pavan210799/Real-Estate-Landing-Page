@@ -1449,6 +1449,8 @@ a {
 
 .section-heading__accent {
   display: block;
+  width: 170px;
+  height: auto;
 }
 
 .section-heading__title-wrap {
@@ -1456,8 +1458,8 @@ a {
   left: 80px;
   top: 66px;
   display: inline-block;
-  width: fit-content;
-  max-width: calc(100% - 80px);
+  width: max-content;
+  max-width: none;
   line-height: 0;
 }
 
@@ -1465,7 +1467,8 @@ a {
   content: '';
   position: absolute;
   left: 0;
-  right: 0;
+  width: 100%;
+  right: auto;
   bottom: -6px;
   height: 2px;
   background: var(--re-gold);
@@ -1485,6 +1488,23 @@ a {
 
 .section-heading__title {
   display: block;
+  height: auto;
+}
+
+.section-heading__title[data-plumb-id='cities'] {
+  width: 95px;
+}
+
+.section-heading__title[data-plumb-id='latest-property'] {
+  width: 249px;
+}
+
+.section-heading__title[data-plumb-id='our-agents'] {
+  width: 193px;
+}
+
+.section-heading__title[data-plumb-id='our-testimonials'] {
+  width: 280px;
 }
 
 /* ── Carousel Nav ── */
@@ -3283,12 +3303,12 @@ a {
 
   .section-heading__title-wrap {
     position: absolute;
-    left: clamp(40px, 10vw, 80px);
+    left: min(80px, calc(min(170px, 38vw) * 0.52));
     top: clamp(44px, 11vw, 66px);
     margin: 0;
     display: inline-block;
     width: fit-content;
-    max-width: calc(100vw - clamp(40px, 10vw, 80px) - 48px);
+    max-width: calc(100vw - min(80px, calc(min(170px, 38vw) * 0.52)) - 48px);
   }
 
   .section-heading .text-image {
@@ -3489,9 +3509,9 @@ a {
   }
 
   .section-heading__title-wrap {
-    left: clamp(32px, 11vw, 48px);
+    left: min(72px, calc(min(130px, 42vw) * 0.52));
     top: clamp(38px, 12vw, 52px);
-    max-width: calc(100vw - clamp(32px, 11vw, 48px) - 40px);
+    max-width: calc(100vw - min(72px, calc(min(130px, 42vw) * 0.52)) - 40px);
   }
 
   .section-heading__accent {
