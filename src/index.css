@@ -147,12 +147,6 @@
   max-width: none;
 }
 
-.hero__eyebrow.text-image,
-.hero__title.text-image {
-  width: auto;
-  max-width: 100%;
-}
-
 *,
 *::before,
 *::after {
@@ -3193,24 +3187,38 @@ a {
     display: contents;
   }
 
-  .hero__eyebrow {
+  .hero__eyebrow-wrap {
     position: absolute;
     top: calc(90px + 48px);
     left: 50%;
-    right: auto;
-    transform: translateX(-50%);
     z-index: 2;
+    display: block;
+    width: fit-content;
+    max-width: min(300px, calc(100vw - 96px));
+    margin: 0;
+    transform: translateX(-50%);
+  }
+
+  .hero__eyebrow-wrap::before {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-position: center center;
+  }
+
+  .hero__eyebrow-wrap:hover::before {
+    transform: translate(-50%, -50%);
+  }
+
+  .hero__eyebrow {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    z-index: 1;
     width: clamp(200px, 34vw, 300px);
     margin: 0;
   }
 
-  .hero__eyebrow-wrap {
-    display: block;
-    width: fit-content;
-    margin-inline: auto;
-  }
-
-  .hero__eyebrow,
   .hero__title {
     display: block;
     margin-inline: auto;
@@ -3408,8 +3416,12 @@ a {
     min-height: 480px;
   }
 
-  .hero__eyebrow {
+  .hero__eyebrow-wrap {
     top: calc(90px + 40px);
+    max-width: min(250px, calc(100vw - 80px));
+  }
+
+  .hero__eyebrow {
     width: clamp(175px, 48vw, 250px);
   }
 
@@ -3454,8 +3466,12 @@ a {
     min-height: 440px;
   }
 
-  .hero__eyebrow {
+  .hero__eyebrow-wrap {
     top: calc(90px + 32px);
+    max-width: min(210px, calc(100vw - 64px));
+  }
+
+  .hero__eyebrow {
     width: clamp(150px, 54vw, 210px);
   }
 
@@ -3627,8 +3643,12 @@ a {
     min-height: 480px;
   }
 
-  .hero__eyebrow {
+  .hero__eyebrow-wrap {
     top: calc(90px + 40px);
+    max-width: min(250px, calc(100vw - 80px));
+  }
+
+  .hero__eyebrow {
     width: clamp(175px, 48vw, 250px);
   }
 
