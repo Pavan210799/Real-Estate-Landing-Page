@@ -514,14 +514,14 @@ a {
   z-index: 2;
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: flex-end;
   width: min(370px, calc(100vw - 120px));
   max-width: 370px;
   height: 56px;
-  padding: 0 12px 0 16px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 14px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-50%) translateX(16px);
@@ -532,16 +532,23 @@ a {
   pointer-events: none;
 }
 
+.header__search-panel-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 56px;
+  padding: 0 12px 0 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+}
+
 .header__search-panel--open {
   opacity: 1;
   visibility: visible;
   transform: translateY(-50%) translateX(0);
   pointer-events: auto;
-}
-
-.header__search-icon {
-  flex-shrink: 0;
-  opacity: 0.75;
 }
 
 .header__search-input {
@@ -552,6 +559,19 @@ a {
   background: transparent;
   color: var(--re-white);
   outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.header__search-input::-webkit-search-decoration,
+.header__search-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+.header__search-input::-moz-search-clear-button {
+  display: none;
 }
 
 .header__search-input::placeholder {
@@ -562,11 +582,14 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   width: 32px;
   height: 32px;
   padding: 0;
+  border: none;
   border-radius: 8px;
-  color: rgba(255, 255, 255, 0.8);
+  background: transparent;
+  color: var(--re-white);
   font-size: 22px;
   line-height: 1;
   transition: background 0.2s ease, color 0.2s ease;
@@ -576,6 +599,34 @@ a {
 .header__search-close:focus-visible {
   background: rgba(255, 255, 255, 0.12);
   color: var(--re-white);
+  outline: none;
+}
+
+.header__search-submit {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  line-height: 0;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.header__search-submit img {
+  display: block;
+  width: 20px;
+  height: 20px;
+  opacity: 0.9;
+}
+
+.header__search-submit:hover,
+.header__search-submit:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
   outline: none;
 }
 
@@ -3028,6 +3079,7 @@ a {
     left: 0;
     right: 0;
     width: auto;
+    max-width: none;
     height: auto;
     margin: 0;
     padding: 16px 24px 20px;
@@ -3038,21 +3090,39 @@ a {
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
     transform: translateY(-110%);
     opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    justify-content: center;
     transition:
       transform 0.34s cubic-bezier(0.4, 0, 0.2, 1),
       opacity 0.28s ease,
       visibility 0.34s ease;
   }
 
+  .header__search-panel-inner {
+    width: min(100%, 560px);
+    height: 52px;
+    padding: 0 12px 0 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 14px;
+  }
+
   .header__search-panel--open {
     transform: translateY(0);
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .header__search-panel .header__search-input {
     min-height: 48px;
     padding: 0 4px;
     font-size: 16px;
+  }
+
+  .header__search-submit {
+    display: inline-flex;
   }
 
   .header__contact--hidden {
@@ -3100,13 +3170,70 @@ a {
     margin: 0;
   }
 
+  .hero__eyebrow-wrap {
+    display: block;
+    width: fit-content;
+    margin-inline: auto;
+  }
+
+  .hero__eyebrow,
+  .hero__title {
+    display: block;
+    margin-inline: auto;
+  }
+
   .hero__title {
     position: absolute;
-    left: 48px;
+    left: 50%;
+    right: auto;
     bottom: 48px;
+    transform: translateX(-50%);
     z-index: 2;
-    width: clamp(300px, 68vw, 580px);
+    width: min(580px, calc(100vw - 96px));
     margin: 0;
+    text-align: center;
+  }
+
+  .explore-cities__header,
+  .explore-property__header,
+  .testimonials__header {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px 24px;
+  }
+
+  .explore-cities__heading,
+  .explore-property__heading,
+  .testimonials__heading {
+    flex: 1 1 220px;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .section-heading,
+  .section-heading--wide {
+    height: auto;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .section-heading__title-wrap {
+    left: clamp(48px, 10vw, 80px);
+    max-width: calc(100% - clamp(48px, 10vw, 80px));
+  }
+
+  .section-heading .text-image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .section-heading__accent {
+    width: min(170px, 42vw);
+  }
+
+  .section-heading__title {
+    width: auto;
+    max-width: min(280px, 68vw);
   }
 
   /* Search: tablet — 3 fields top row, button centered below */
@@ -3196,9 +3323,11 @@ a {
   }
 
   .hero__title {
-    left: 40px;
+    left: 50%;
+    right: auto;
     bottom: 40px;
-    width: clamp(280px, 86vw, 440px);
+    transform: translateX(-50%);
+    width: min(440px, calc(100vw - 80px));
   }
 
   .search-property__fields {
@@ -3240,9 +3369,37 @@ a {
   }
 
   .hero__title {
-    left: 32px;
+    left: 50%;
+    right: auto;
     bottom: 32px;
-    width: clamp(240px, 92vw, 340px);
+    transform: translateX(-50%);
+    width: min(340px, calc(100vw - 64px));
+  }
+
+  .explore-cities__header,
+  .explore-property__header,
+  .testimonials__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .section-heading__title-wrap {
+    position: relative;
+    left: 0;
+    top: auto;
+    display: block;
+    margin-top: -28px;
+    margin-left: clamp(40px, 12vw, 72px);
+    max-width: calc(100% - clamp(40px, 12vw, 72px));
+  }
+
+  .section-heading__accent {
+    width: min(150px, 48vw);
+  }
+
+  .section-heading__title {
+    max-width: min(240px, 78vw);
   }
 
   .landing-page__light-section {
@@ -3375,9 +3532,11 @@ a {
   }
 
   .hero__title {
-    left: 40px;
+    left: 50%;
+    right: auto;
     bottom: 40px;
-    width: clamp(280px, 86vw, 440px);
+    transform: translateX(-50%);
+    width: min(440px, calc(100vw - 80px));
   }
 
   .search-property__fields {
