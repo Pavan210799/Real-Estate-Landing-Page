@@ -179,7 +179,7 @@ export default function Header() {
           data-plumb-id="group-1077"
           onClick={(event) => scrollToSection(event, 'hero')}
         >
-          <img src="/images/group-1077.svg" alt="Meneto" width={150} height={40} />
+          <img src="/images/group-1077.svg" alt="Meneto" className="header__logo-img" />
         </a>
 
         <div className="header__right" ref={searchRef}>
