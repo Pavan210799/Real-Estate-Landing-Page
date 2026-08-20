@@ -1,0 +1,24 @@
+/** Exact Figma typography — Brandon Grotesque + Source Sans Pro */
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: url('/fonts/brandon-grotesque-light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: url('/fonts/brandon-grotesque-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: url('/fonts/brandon-grotesque-black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,0 +1,63 @@
+/* Auth buttons — match landing page button interactions */
+.btn-premium {
+  border: none;
+  cursor: pointer;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease,
+    color 0.22s ease;
+}
+
+.btn-premium:hover {
+  transform: translateY(-1px);
+}
+
+.btn-premium:active {
+  transform: translateY(0);
+  transition-duration: 0.12s;
+}
+
+.btn-premium:focus-visible {
+  outline: 2px solid var(--re-navy);
+  outline-offset: 3px;
+}
+
+.btn-premium--gold {
+  background: var(--re-gold);
+  color: var(--re-white);
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: -0.22px;
+}
+
+.btn-premium--gold:hover {
+  box-shadow: 0 8px 22px rgba(208, 181, 128, 0.38);
+  background: #dbc99a;
+}
+
+.btn-premium--gold:active {
+  box-shadow: 0 4px 12px rgba(208, 181, 128, 0.28);
+}
+
+.btn-premium--navy:hover {
+  box-shadow: 0 10px 28px rgba(13, 32, 56, 0.18);
+  background: #122a45;
+}
+
+.btn-premium--navy:active {
+  box-shadow: 0 4px 14px rgba(13, 32, 56, 0.14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-premium {
+    transition: none !important;
+  }
+
+  .btn-premium:hover,
+  .btn-premium:active {
+    transform: none;
+  }
+}
