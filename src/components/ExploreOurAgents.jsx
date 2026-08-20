@@ -63,13 +63,15 @@ export default function ExploreOurAgents({ agents }) {
       id="agents"
       data-plumb-id="explore-our-agents"
     >
-      <div className="section-heading section-heading--wide explore-agents__heading">
-        <div className="explore-agents__accent-wrap">
-          <TextImage asset={accent} className="section-heading__accent" plumbId="explore" />
+      <div className="explore-agents__header">
+        <div className="section-heading section-heading--wide explore-agents__heading">
+          <div className="explore-agents__accent-wrap">
+            <TextImage asset={accent} className="section-heading__accent" plumbId="explore" />
+          </div>
+          <span className="section-heading__title-wrap">
+            <TextImage asset={title} className="section-heading__title" plumbId="our-agents" />
+          </span>
         </div>
-        <span className="section-heading__title-wrap">
-          <TextImage asset={title} className="section-heading__title" plumbId="our-agents" />
-        </span>
       </div>
 
       <div className="explore-agents__viewport">

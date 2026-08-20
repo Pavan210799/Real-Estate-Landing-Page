@@ -147,6 +147,12 @@
   max-width: none;
 }
 
+.hero__eyebrow.text-image,
+.hero__title.text-image {
+  width: auto;
+  max-width: 100%;
+}
+
 *,
 *::before,
 *::after {
@@ -579,7 +585,7 @@ a {
 }
 
 .header__search-close {
-  display: inline-flex;
+  display: none;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
@@ -1456,6 +1462,8 @@ a {
   left: 80px;
   top: 66px;
   display: inline-block;
+  width: fit-content;
+  max-width: calc(100% - 80px);
   line-height: 0;
 }
 
@@ -1545,8 +1553,9 @@ a {
 
 .explore-cities__header {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: space-between;
+  gap: 8px 12px;
   margin-bottom: 50px;
 }
 
@@ -1773,8 +1782,9 @@ a {
 
 .explore-property__header {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: space-between;
+  gap: 8px 12px;
   margin-bottom: 50px;
 }
 
@@ -2161,6 +2171,14 @@ a {
   overflow: visible;
 }
 
+.explore-agents__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px 12px;
+  margin-bottom: 50px;
+}
+
 .explore-agents__heading {
   min-width: 0;
 }
@@ -2219,7 +2237,7 @@ a {
 
 .explore-agents__viewport {
   padding: 16px 48px 56px;
-  margin: 34px -48px -56px;
+  margin: -16px -48px -56px;
 }
 
 .explore-agents__grid {
@@ -2350,8 +2368,9 @@ a {
   max-width: calc(100% - 32px);
   margin: 0 auto 50px;
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: space-between;
+  gap: 8px 12px;
 }
 
 .testimonials__heading {
@@ -2956,8 +2975,23 @@ a {
   }
 
   .explore-agents__viewport {
-    margin: 34px -32px -56px;
+    margin: -16px -32px -56px;
     padding: 16px 32px 56px;
+  }
+
+  .testimonials__viewport {
+    width: min(var(--re-content-width), calc(100% - 32px));
+    max-width: calc(100% - 32px);
+    margin: -16px auto -56px;
+    padding: 16px 16px 56px;
+    overflow: visible;
+  }
+
+  .testimonials__header {
+    width: min(var(--re-content-width), calc(100% - 32px));
+    max-width: calc(100% - 32px);
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .explore-cities__viewport,
@@ -3182,6 +3216,14 @@ a {
     margin-inline: auto;
   }
 
+  .hero__eyebrow.text-image,
+  .hero__title.text-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-inline: auto;
+  }
+
   .hero__title {
     position: absolute;
     left: 50%;
@@ -3196,44 +3238,84 @@ a {
 
   .explore-cities__header,
   .explore-property__header,
+  .explore-agents__header {
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 8px 12px;
+    max-width: 100%;
+  }
+
   .testimonials__header {
     flex-wrap: wrap;
-    align-items: center;
-    gap: 20px 24px;
+    align-items: flex-end;
+    gap: 8px 12px;
+    width: min(var(--re-content-width), calc(100% - 32px));
+    max-width: calc(100% - 32px);
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .explore-cities__heading,
   .explore-property__heading,
-  .testimonials__heading {
-    flex: 1 1 220px;
-    min-width: 0;
+  .testimonials__heading,
+  .explore-agents__heading {
+    flex: 0 1 auto;
+    width: auto;
     max-width: 100%;
   }
 
   .section-heading,
   .section-heading--wide {
+    width: auto;
+    max-width: 100%;
+    min-height: clamp(88px, 24vw, 116px);
     height: auto;
-    min-height: 0;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .section-heading__title-wrap {
-    left: clamp(48px, 10vw, 80px);
-    max-width: calc(100% - clamp(48px, 10vw, 80px));
+    position: absolute;
+    left: clamp(40px, 10vw, 80px);
+    top: clamp(44px, 11vw, 66px);
+    margin: 0;
+    display: inline-block;
+    width: fit-content;
+    max-width: calc(100vw - clamp(40px, 10vw, 80px) - 48px);
   }
 
   .section-heading .text-image {
-    max-width: 100%;
+    width: auto;
     height: auto;
   }
 
   .section-heading__accent {
-    width: min(170px, 42vw);
+    width: min(170px, 38vw);
+    max-width: min(170px, 38vw);
   }
 
   .section-heading__title {
     width: auto;
-    max-width: min(280px, 68vw);
+    max-width: min(280px, calc(100vw - 112px));
+  }
+
+  .section-heading__title[data-plumb-id='cities'] {
+    max-width: min(95px, calc(100vw - 112px));
+  }
+
+  .section-heading__title[data-plumb-id='latest-property'] {
+    max-width: min(249px, calc(100vw - 112px));
+  }
+
+  .section-heading__title[data-plumb-id='our-agents'] {
+    max-width: min(193px, calc(100vw - 112px));
+  }
+
+  .section-heading__title[data-plumb-id='our-testimonials'] {
+    max-width: min(280px, calc(100vw - 112px));
+  }
+
+  .header__search-close {
+    display: inline-flex;
   }
 
   /* Search: tablet — 3 fields top row, button centered below */
@@ -3312,6 +3394,15 @@ a {
     grid-template-columns: auto 1fr auto;
   }
 
+  .explore-cities__header,
+  .explore-property__header,
+  .testimonials__header,
+  .explore-agents__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
   .hero {
     height: clamp(480px, 72vh, 640px);
     min-height: 480px;
@@ -3376,30 +3467,40 @@ a {
     width: min(340px, calc(100vw - 64px));
   }
 
-  .explore-cities__header,
-  .explore-property__header,
-  .testimonials__header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+  .section-heading,
+  .section-heading--wide {
+    min-height: clamp(78px, 26vw, 96px);
   }
 
   .section-heading__title-wrap {
-    position: relative;
-    left: 0;
-    top: auto;
-    display: block;
-    margin-top: -28px;
-    margin-left: clamp(40px, 12vw, 72px);
-    max-width: calc(100% - clamp(40px, 12vw, 72px));
+    left: clamp(32px, 11vw, 48px);
+    top: clamp(38px, 12vw, 52px);
+    max-width: calc(100vw - clamp(32px, 11vw, 48px) - 40px);
   }
 
   .section-heading__accent {
-    width: min(150px, 48vw);
+    width: min(130px, 42vw);
+    max-width: min(130px, 42vw);
   }
 
   .section-heading__title {
-    max-width: min(240px, 78vw);
+    max-width: min(220px, calc(100vw - 88px));
+  }
+
+  .section-heading__title[data-plumb-id='cities'] {
+    max-width: min(88px, calc(100vw - 88px));
+  }
+
+  .section-heading__title[data-plumb-id='latest-property'] {
+    max-width: min(210px, calc(100vw - 88px));
+  }
+
+  .section-heading__title[data-plumb-id='our-agents'] {
+    max-width: min(165px, calc(100vw - 88px));
+  }
+
+  .section-heading__title[data-plumb-id='our-testimonials'] {
+    max-width: min(220px, calc(100vw - 88px));
   }
 
   .landing-page__light-section {
@@ -3575,9 +3676,17 @@ a {
     margin-bottom: 80px;
   }
 
+  .testimonials__header {
+    width: min(var(--re-content-width), calc(100% - 40px));
+    max-width: calc(100% - 40px);
+    margin: 0 auto 50px;
+  }
+
   .testimonials__viewport {
-    padding: 16px 32px 56px;
-    margin: -16px -32px -56px;
+    width: min(var(--re-content-width), calc(100% - 40px));
+    max-width: calc(100% - 40px);
+    margin: -16px auto -56px;
+    padding: 16px 24px 56px;
   }
 
   .explore-cities__viewport,
@@ -3653,7 +3762,7 @@ a {
   }
 
   .explore-agents__viewport {
-    margin: 34px -20px -56px;
+    margin: -16px -20px -56px;
     padding: 16px 20px 56px;
   }
 
